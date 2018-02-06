@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/0-dummyservlet" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/restspark/pom.xml" />
+        <option value="$PROJECT_DIR$/springrest/pom.xml" />
+        <option value="$PROJECT_DIR$/springrestsecure/pom.xml" />
+        <option value="$PROJECT_DIR$/dummyservlet/pom.xml" />
+        <option value="$PROJECT_DIR$/dataaccessbasic/pom.xml" />
+        <option value="$PROJECT_DIR$/dataaccessjpa/pom.xml" />
+        <option value="$PROJECT_DIR$/restsparkfiltered/pom.xml" />
+        <option value="$PROJECT_DIR$/1-dataaccessbasic/pom.xml" />
+        <option value="$PROJECT_DIR$/0-dummyservlet/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

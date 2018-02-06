@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dataaccessbasic" />
+        <module name="dummyservlet" />
+      </profile>
+      <profile name="Annotation profile for springrest" enabled="true">
+        <sourceOutputDir name="../springrest/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../springrest/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springrest" />
+      </profile>
+      <profile name="Annotation profile for data-access.jpa" enabled="true">
+        <sourceOutputDir name="../dataaccessjpa/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../dataaccessjpa/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dataaccessjpa" />
+      </profile>
+      <profile name="Annotation profile for rest-spark" enabled="true">
+        <sourceOutputDir name="../restspark/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../restspark/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="restspark" />
+      </profile>
+      <profile name="Annotation profile for spring-rest-secure" enabled="true">
+        <sourceOutputDir name="../springrestsecure/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../springrestsecure/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springrestsecure" />
+      </profile>
+      <profile name="Annotation profile for rest-spark-filtered" enabled="true">
+        <sourceOutputDir name="../restsparkfiltered/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../restsparkfiltered/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="restsparkfiltered" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dataaccessbasic" target="1.5" />
+      <module name="dataaccessjpa" target="1.5" />
+      <module name="dummyservlet" target="1.5" />
+      <module name="restspark" target="1.5" />
+      <module name="restsparkfiltered" target="1.5" />
+      <module name="springrest" target="1.5" />
+      <module name="springrestsecure" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
