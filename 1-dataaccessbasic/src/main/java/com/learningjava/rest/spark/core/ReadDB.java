@@ -1,4 +1,4 @@
-package com.learningjava.rest.dataaccess;
+package com.learningjava.rest.spark.core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
