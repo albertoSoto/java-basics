@@ -14,9 +14,9 @@
     <dependencies>
         <!-- Aqui hay que añadir el OJDBC -->
         <dependency>
-            <groupId>com.oracle.jdbc</groupId>
+            <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
-            <version>12.2.0.1</version>
+            <version>11.2.0.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
         <dependency>
@@ -47,5 +47,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
