@@ -36,6 +36,25 @@ public class ReadDB {
         }
     }
 
+    private Object executePreparedStatement(String query
+            , Function<PreparedStatement, PreparedStatement> psFunction
+            , Function<ResultSet, Object> f) {
+        Connection con;
+        PreparedStatement ps;
+        try {
+            Class.forName(DRIVER);
+            con = DriverManager.getConnection(THIN_URL, USER, PASSWORD);
+            ps = con.prepareStatement(query);
+            ps = psFunction.apply(ps);
+            ResultSet rs = ps.executeQuery(query);
+            Object o = f.apply(rs);
+            ps.close();
+            con.close();
+            return o;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public List<Restaurant> readRestaurant(String search) {
         List<Restaurant> arrayRestaurants = new ArrayList<>();
@@ -133,7 +152,7 @@ public class ReadDB {
         try {
             final String query = "SELECT R.RES_CODI,R.RES_NOM,R.RES_ADRECA,R.RES_WEB,R.RES_TELEFON,R.RES_URL_IMG,R.RES_MITJANA, TR.TRS_DESCRIPCIO FROM " +
                     "RESTAURANTS R,TRESTAURANTS TR WHERE  R.RES_TRS_CODI = TR.TRS_CODI";
-            if (isTraditionalSearch){
+            if (isTraditionalSearch) {
                 //VERSION GENERICS
                 Class.forName(DRIVER);
                 Connection con = DriverManager.getConnection(THIN_URL, USER, PASSWORD);
@@ -141,9 +160,10 @@ public class ReadDB {
                 // Aquí feim una Query directament a la base de dades:
                 ResultSet rs = stmt.executeQuery(query);
                 // I aquí indicam que mentres hi hagi mes restaurants, segueixi impriment-los.
-                arrayRestaurants= mapper.mapResultSetToObject(rs,Restaurant.class);
-                stmt.close();con.close();
-            }else{
+                arrayRestaurants = mapper.mapResultSetToObject(rs, Restaurant.class);
+                stmt.close();
+                con.close();
+            } else {
                 //VERSION FUNCTIONAL
                 arrayRestaurants = new ArrayList<>();
                 Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
@@ -155,6 +175,28 @@ public class ReadDB {
             }
         } catch (Exception e) {
             System.out.println(e.toString());
+        }
+        return arrayRestaurants;
+    }
+
+    public List<Restaurant> getRestaurantWithPS(String searchName) {
+        List<Restaurant> arrayRestaurants = new ArrayList<>();
+        try {
+            executePreparedStatement("SELECT * FROM (SELECT R.RES_NOM, R.RES_ADRECA, R.RES_WEB, R.RES_TELEFON, R.RES_URL_IMG, R.RES_CODI, T.TRS_DESCRIPCIO FROM RESTAURANTS R, TRESTAURANTS T WHERE RES_TRS_CODI = TRS_CODI AND LOWER(R.RES_NOM) LIKE ? ORDER BY RES_MITJANA ASC) WHERE ROWNUM <= 5"
+                    , rs -> {
+                        try {
+                            rs.setString(1, "%" + searchName.toLowerCase() + "%");
+                        } catch (SQLException e) {
+                            System.out.println("mek");
+                        }
+                        return rs;
+                    }
+                    , rs -> {
+                        ResultSetMapper<Restaurant> mapper = new ResultSetMapper<>();
+                        return mapper.mapResultSetToObject(rs, Restaurant.class);
+                    });
+        } catch (Exception e) {
+            System.out.println("error");
         }
         return arrayRestaurants;
     }
