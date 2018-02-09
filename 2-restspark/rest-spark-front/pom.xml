@@ -9,7 +9,6 @@
         <artifactId>rest-spark</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.learningjava.rest.spark</groupId>
     <artifactId>rest-spark-front</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>

@@ -23,6 +23,27 @@
         <module>rest-spring-secure-core</module>
         <module>rest-spring-secure-front</module>
     </modules>
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app  will need. -->
+            <!-- By default that is to put the resulting archive into the deployments folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different environments.html -->
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <outputDirectory>target</outputDirectory>
+                            <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <dependencies>
         <!-- Jackson libraries -->
         <dependency>
@@ -35,8 +56,6 @@
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.library}</version>
         </dependency>
-
-
     </dependencies>
     <repositories>
         <repository>

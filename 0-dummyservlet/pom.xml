@@ -16,20 +16,26 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>target</outputDirectory>
-                    <warName>ROOT</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app  will need. -->
+            <!-- By default that is to put the resulting archive into the deployments folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different environments.html -->
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <outputDirectory>target</outputDirectory>
+                            <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
