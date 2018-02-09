@@ -1,4 +1,4 @@
-package com.learningjava.rest.spring.front;
+package com.learningjava.rest.spring.front.controller;
 
 import com.learningjava.rest.spring.core.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping(path = "/rest/api/v1")
-public class GreetingController {
-
+@RequestMapping(path = RestApiController.REST_API_MAPPING)
+public class RestApiController {
+    public static final String REST_API_MAPPING = "/rest/api/v1";
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
