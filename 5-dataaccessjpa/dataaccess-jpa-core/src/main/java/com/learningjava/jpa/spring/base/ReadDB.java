@@ -18,7 +18,7 @@ public class ReadDB {
     private static final String USER = "usuari";
     private static final String PASSWORD = "usuari";
 
-    private Object searchDB(String query, Function<ResultSet, Object> f) {
+    private Object executeQuery(String query, Function<ResultSet, Object> f) {
         Connection con;
         Statement stmt;
         try {
@@ -55,7 +55,7 @@ public class ReadDB {
                     return a.mapResultSetToObject(rs, Restaurant.class);
                 }
             };
-            arrayRestaurants = (ArrayList) searchDB(query, func);
+            arrayRestaurants = (ArrayList) executeQuery(query, func);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -127,35 +127,47 @@ public class ReadDB {
         return arrayOpinions;
     }
 
-    public List readRestaurantAPI() {
+    public List readRestaurantAPI(boolean isTraditionalSearch) {
         List<Restaurant> arrayRestaurants = new ArrayList<>();
+        ResultSetMapper<Restaurant> mapper = new ResultSetMapper<>();
         try {
-            //VERSION GENERICS
-            String query = "SELECT R.RES_CODI,R.RES_NOM,R.RES_ADRECA,R.RES_WEB,R.RES_TELEFON,R.RES_URL_IMG,R.RES_MITJANA, TR.TRS_DESCRIPCIO FROM " +
+            final String query = "SELECT R.RES_CODI,R.RES_NOM,R.RES_ADRECA,R.RES_WEB,R.RES_TELEFON,R.RES_URL_IMG,R.RES_MITJANA, TR.TRS_DESCRIPCIO FROM " +
                     "RESTAURANTS R,TRESTAURANTS TR WHERE  R.RES_TRS_CODI = TR.TRS_CODI";
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@35.205.41.45:1521:XE", "usuari", "usuari");
-            Statement stmt = con.createStatement();
-            // Aquí feim una Query directament a la base de dades:
-            ResultSet rs = stmt.executeQuery(query);
-            // I aquí indicam que mentres hi hagi mes restaurants, segueixi impriment-los.
-            ResultSetMapper<Restaurant> mapper = new ResultSetMapper<>();
-            arrayRestaurants= mapper.mapResultSetToObject(rs,Restaurant.class);
-            stmt.close();con.close();
-            //VERSION FUNCTIONAL
-            arrayRestaurants = new ArrayList<>();
-            Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
-                public Object apply(ResultSet rs) {
-                    return mapper.mapResultSetToObject(rs, Restaurant.class);
-                }
-            };
-            arrayRestaurants = (ArrayList) searchDB(query, func);
-            System.out.println("yuhu v2");
+            if (isTraditionalSearch){
+                //VERSION GENERICS
+                Class.forName(DRIVER);
+                Connection con = DriverManager.getConnection(THIN_URL, USER, PASSWORD);
+                Statement stmt = con.createStatement();
+                // Aquí feim una Query directament a la base de dades:
+                ResultSet rs = stmt.executeQuery(query);
+                // I aquí indicam que mentres hi hagi mes restaurants, segueixi impriment-los.
+                arrayRestaurants= mapper.mapResultSetToObject(rs,Restaurant.class);
+                stmt.close();con.close();
+            }else{
+                //VERSION FUNCTIONAL
+                arrayRestaurants = new ArrayList<>();
+                Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
+                    public Object apply(ResultSet rs) {
+                        return mapper.mapResultSetToObject(rs, Restaurant.class);
+                    }
+                };
+                arrayRestaurants = (ArrayList) executeQuery(query, func);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }
         return arrayRestaurants;
     }
+/*
+    public List getAll(String query, Class classname){
+        arrayRestaurants = new ArrayList<>();
+        Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
+            public Object apply(ResultSet rs) {
+                return mapper.mapResultSetToObject(rs, Restaurant.class);
+            }
+        };
+        arrayRestaurants = (ArrayList) executeQuery(query, func);
+    }*/
 }
 
 
