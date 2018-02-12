@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
+/**
+ * com.learningjava.rest.spark.core
+ * Class
+ * By berto. 12/02/2018
+ */
 public class ReadDB extends Restaurantes {
     // se crea el objeto con un parametro
     public ArrayList readRestaurantes(String cerca) {

@@ -4,7 +4,11 @@ import com.learningjava.rest.spring.front.SecureApplication;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
-
+/**
+ * com.learningjava.rest.spring.front.configuration
+ * Class
+ * By berto. 12/02/2018
+ */
 public class RestSpringSecureInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
  
     @Override

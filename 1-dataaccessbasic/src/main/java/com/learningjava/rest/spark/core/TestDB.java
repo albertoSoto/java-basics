@@ -3,10 +3,9 @@ package com.learningjava.rest.spark.core;
 import java.util.ArrayList;
 
 /**
- * zeroproject
- * com.iesemilidarder.projectzero.core
- * Created by alber in 12/01/2018.
- * Description:
+ * com.learningjava.rest.spark.core
+ * Class
+ * By berto. 12/02/2018
  */
 public class TestDB {
     public static void main (String... args){

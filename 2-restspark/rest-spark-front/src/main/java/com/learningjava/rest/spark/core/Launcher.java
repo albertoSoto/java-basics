@@ -86,7 +86,7 @@ public class Launcher {
             staticFiles.location("/public");
         }*/
         //hello world for dummies, via lambdas
-        get("/hello", (req, res) -> "Hello World");
+        get("/", (req, res) -> "Hello World");
         //json response way1: via spark renderer
         get("/json", "application/json", (request, response) -> {
             User user = new User();

@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
-
+/**
+ * com.learningjava.rest.spring.front.controller
+ * Class
+ * By berto. 12/02/2018
+ */
 @RestController
 @RequestMapping(path = RestApiController.REST_API_MAPPING)
 public class RestApiController {

@@ -1,5 +1,9 @@
 package com.learningjava.rest.spark.core;
-
+/**
+ * com.learningjava.rest.spark.core
+ * Class
+ * By berto. 12/02/2018
+ */
 public class Restaurantes {
 // atributos
         private String nom;

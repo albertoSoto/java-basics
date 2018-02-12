@@ -1,6 +1,5 @@
 package com.learningjava.rest.spring.front.configuration;
 
-import com.learningjava.rest.spring.front.controller.RestApiController;
 import com.learningjava.rest.spring.front.security.CustomBasicAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +10,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
+/**
+ * com.learningjava.rest.spring.front.configuration.configuration
+ * Class
+ * By berto. 12/02/2018
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
