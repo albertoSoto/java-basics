@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="user" type="eu.kielczewski.example.domain.User" -->
+<#-- @ftlvariable name="user" type="com.learningjava.full.spring.domain.User" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
