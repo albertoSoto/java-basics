@@ -1,5 +1,6 @@
 package com.learningjava.rest.spring.front.security;
 
+import com.learningjava.rest.spring.front.configuration.SecurityConfig;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
@@ -29,7 +30,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
     
     @Override
     public void afterPropertiesSet() throws Exception {
-        setRealmName("MY_TEST_REALM");
+        setRealmName(SecurityConfig.REALM);
         super.afterPropertiesSet();
     }
 }

@@ -8,7 +8,6 @@
         <artifactId>rest-spring-secure</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.learningjava.rest.spring</groupId>
     <artifactId>rest-spring-secure-front</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -64,16 +63,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>target</outputDirectory>
-                    <warName>ROOT</warName>
-                </configuration>
             </plugin>
         </plugins>
     </build>
