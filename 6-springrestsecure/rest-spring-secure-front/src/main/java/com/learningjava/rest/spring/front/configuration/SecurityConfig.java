@@ -1,6 +1,6 @@
 package com.learningjava.rest.spring.front.configuration;
 
-import com.learningjava.rest.spring.front.security.CustomBasicAuthenticationEntryPoint;
+import com.learningjava.full.spring.security.CustomBasicAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
