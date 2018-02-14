@@ -1,11 +1,31 @@
+<#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
+<#-- @ftlvariable name="currentUser" type="eu.kielczewski.example.domain.CurrentUser" -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="utf-8">
+    <title>Home page</title>
 </head>
 <body>
-<h1>Welcome!</h1>
-
-<p>Click <a href="/hello">here</a> to see a greeting.</p>
+<nav role="navigation">
+    <ul>
+    <#if !currentUser??>
+        <li><a href="/login">Log in</a></li>
+    </#if>
+    <#if currentUser??>
+        <li>
+            <form action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button type="submit">Log out</button>
+            </form>
+        </li>
+        <li><a href="/user/${currentUser.id}">View myself</a></li>
+    </#if>
+    <#if currentUser?? && currentUser.role == "ADMIN">
+        <li><a href="/user/create">Create a new user</a></li>
+        <li><a href="/users">View all users</a></li>
+    </#if>
+    </ul>
+</nav>
 </body>
 </html>

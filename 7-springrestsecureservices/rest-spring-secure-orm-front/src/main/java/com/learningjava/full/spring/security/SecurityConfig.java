@@ -1,57 +1,51 @@
 package com.learningjava.full.spring.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-/**
- * com.learningjava.full.spring.configuration.configuration
- * Class
- * By berto. 12/02/2018
- */
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-    private static String REALM = "MY_TEST_REALM";
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("tom").password("abc123").roles("USER");
-    }
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*	  http.csrf().disable()
-          .authorizeRequests()
-	  	.antMatchers(RestApiController.REST_API_MAPPING+"/**").hasRole("ADMIN")
-		.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
-*/
         http.authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/public/**").permitAll()
+                .antMatchers("/users/**").hasAuthority("ADMIN")
+                .anyRequest().fullyAuthenticated()
                 .and()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login")
+                .failureUrl("/login?error")
+                .usernameParameter("email")
                 .permitAll()
                 .and()
-            .logout()
-                .permitAll();
-    }
-
-    @Bean
-    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
-        return new CustomBasicAuthenticationEntryPoint();
+                .logout()
+                .logoutUrl("/logout")
+                .deleteCookies("remember-me")
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+                .rememberMe();
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
+
 }

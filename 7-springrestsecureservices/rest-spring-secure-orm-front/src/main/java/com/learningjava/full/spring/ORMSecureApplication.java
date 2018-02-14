@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * By berto. 12/02/2018
  *
  *
- * Uses JPArepositories for letting available
- * core repositories from another modules
+ * Uses JPArepositories annotation for letting available
+ * core repositories from another libraries or maven modules
  */
 @SpringBootApplication
 @ComponentScan(basePackages = "com.learningjava.full.spring")

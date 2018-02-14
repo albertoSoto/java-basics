@@ -1,22 +1,42 @@
+<#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
+<#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en">
 <head>
-    <title>Spring Security Example </title>
+    <meta charset="utf-8">
+    <title>Log in</title>
 </head>
 <body>
-<#if param?? && param.error??>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+
+<h1>Log in</h1>
+
+<p>You can use: demo@localhost / demo</p>
+
+<form role="form" action="/login" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
     <div>
-        Invalid username and password.
+        <label for="email">Email address</label>
+        <input type="email" name="email" id="email" required autofocus/>
     </div>
-</#if>
-<#if param?? && param.logout??>
-    <div>You have been logged out.</div>
-</#if>
-<form action="/login" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required/>
+    </div>
+    <div>
+        <label for="remember-me">Remember me</label>
+        <input type="checkbox" name="remember-me" id="remember-me"/>
+    </div>
+    <button type="submit">Sign in</button>
 </form>
+
+<#if error.isPresent()>
+<p>The email or password you have entered is invalid, try again.</p>
+</#if>
 </body>
 </html>
