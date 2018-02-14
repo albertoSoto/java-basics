@@ -1,4 +1,4 @@
-package com.learningjava.rest.spring.front.configuration;
+package com.learningjava.full.spring.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * com.learningjava.rest.spring.front.configuration
+ * com.learningjava.full.spring.configuration
  * Class StartConfig
  * By berto. 12/02/2018
  */

@@ -1,4 +1,4 @@
-package com.learningjava.rest.spring.front.controller;
+package com.learningjava.full.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

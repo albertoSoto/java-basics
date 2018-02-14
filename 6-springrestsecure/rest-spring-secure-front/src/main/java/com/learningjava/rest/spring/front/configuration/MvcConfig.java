@@ -3,8 +3,9 @@ package com.learningjava.rest.spring.front.configuration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 /**
- * com.learningjava.rest.spring.front.configuration
+ * com.learningjava.full.spring.configuration
  * Class
  * By berto. 12/02/2018
  */

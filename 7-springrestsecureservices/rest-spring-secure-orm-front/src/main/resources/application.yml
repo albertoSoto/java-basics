@@ -1,0 +1,9 @@
+rserver:
+  port: 8080
+spring:
+  freemarker:
+    expose-spring-macro-helpers: true
+    expose-request-attributes: true
+  mvc:
+    view:
+      prefix: /templates/

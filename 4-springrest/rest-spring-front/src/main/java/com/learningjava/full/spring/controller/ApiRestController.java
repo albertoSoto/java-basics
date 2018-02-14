@@ -1,4 +1,4 @@
-package com.learningjava.rest.spring.front.controller;
+package com.learningjava.full.spring.controller;
 
 import com.learningjava.rest.spring.core.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;

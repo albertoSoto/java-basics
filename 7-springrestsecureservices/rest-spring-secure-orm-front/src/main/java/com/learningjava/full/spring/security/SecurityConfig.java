@@ -1,6 +1,5 @@
-package com.learningjava.rest.spring.front.configuration;
+package com.learningjava.full.spring.security;
 
-import com.learningjava.rest.spring.front.security.CustomBasicAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
 /**
  * com.learningjava.full.spring.configuration.configuration
  * Class
@@ -20,7 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static String REALM = "MY_TEST_REALM";
+    private static String REALM = "MY_TEST_REALM";
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {

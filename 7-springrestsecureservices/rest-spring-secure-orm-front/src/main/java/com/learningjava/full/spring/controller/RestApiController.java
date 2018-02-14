@@ -1,13 +1,12 @@
-package com.learningjava.rest.spring.front.controller;
+package com.learningjava.full.spring.controller;
 
-import com.learningjava.rest.spring.core.Greeting;
+import com.learningjava.full.spring.dao.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
-
 /**
  * com.learningjava.full.spring.controller
  * Class

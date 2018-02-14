@@ -1,4 +1,4 @@
-package com.learningjava.full.spring.security;
+package com.learningjava.rest.spring.front.security;
 
 import com.learningjava.rest.spring.front.configuration.SecurityConfig;
 import org.springframework.security.core.AuthenticationException;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 /**
  * com.learningjava.full.spring.security
  * Class

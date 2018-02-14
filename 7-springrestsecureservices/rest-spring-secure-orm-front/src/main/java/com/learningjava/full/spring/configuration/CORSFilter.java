@@ -1,4 +1,4 @@
-package com.learningjava.rest.spring.front.configuration;
+package com.learningjava.full.spring.configuration;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

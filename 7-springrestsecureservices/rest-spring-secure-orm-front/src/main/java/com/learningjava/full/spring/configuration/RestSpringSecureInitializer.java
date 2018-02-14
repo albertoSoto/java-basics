@@ -1,10 +1,9 @@
-package com.learningjava.rest.spring.front.configuration;
+package com.learningjava.full.spring.configuration;
 
-import com.learningjava.rest.spring.front.SecureApplication;
+import com.learningjava.full.spring.ORMSecureApplication;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
-
 /**
  * com.learningjava.full.spring.configuration
  * Class
@@ -14,7 +13,7 @@ public class RestSpringSecureInitializer extends AbstractAnnotationConfigDispatc
  
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { SecureApplication.class };
+        return new Class[] { ORMSecureApplication.class };
     }
   
     @Override

@@ -1,6 +1,7 @@
-package com.learningjava.full.spring.security;
+package com.learningjava.rest.spring.front.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+
 /**
  * com.learningjava.full.spring.security
  * Class
