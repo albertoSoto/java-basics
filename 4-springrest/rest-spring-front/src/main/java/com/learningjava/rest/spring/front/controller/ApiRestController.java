@@ -1,4 +1,4 @@
-package com.learningjava.full.spring.controller;
+package com.learningjava.rest.spring.front.controller;
 
 import com.learningjava.rest.spring.core.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * com.learningjava.rest.spring.front
  * Class

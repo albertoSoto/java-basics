@@ -1,4 +1,4 @@
-package com.learningjava.full.spring.configuration;
+package com.learningjava.rest.spring.front.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

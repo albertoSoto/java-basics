@@ -1,8 +1,9 @@
-package com.learningjava.full.spring.controller;
+package com.learningjava.rest.spring.front.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * com.learningjava.rest.spring.front
  * Class
