@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba rest</title>
+</head>
+<body>
+<h1 id="myTitle">Rest mola y lo sabes!</h1>
+<table width="100%">
+    <tr>
+        <td ><div class="myUsers"></div></td>
+        <td><div class="myUsers"></div></td>
+    </tr>
+</table>
+<script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        console.log($("#myTitle").html());
+        $.get("/rest/api/v1/list", function (data) {
+            console.log(data);
+            var contentHtml = "<h2>Mensajes en el sistema</h2>";
+            $.each(data, function( index, value ) {
+                var cell= "<div>Name:"+value.content+"</div>";
+                contentHtml += cell;
+            });
+            $(".myUsers").html(contentHtml);
+            console.log("Load was performed.");
+        });
+    });
+</script>
+</body>
+</html>
