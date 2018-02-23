@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.learningjava.rest.spring</groupId>
+        <artifactId>rest-spring-oracle</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>rest-spring-oracle-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app  will need. -->
+            <!-- By default that is to put the resulting archive into the deployments folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different environments.html -->
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <version>2.5.2</version>
+                        <configuration>
+                            <groupId>com.oracle</groupId>
+                            <artifactId>ojdbc6</artifactId>
+                            <version>11.2.0.3</version>
+                            <packaging>jar</packaging>
+                            <file>ojdbc6-11.2.0.3.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>install-jar-lib</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>validate</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
