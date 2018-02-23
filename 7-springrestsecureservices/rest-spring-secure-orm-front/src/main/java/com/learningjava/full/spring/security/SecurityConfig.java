@@ -18,15 +18,17 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private SecurityProperties securityProperties;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        //http.csrf().
+        http    .authorizeRequests()
                 .antMatchers("/", "/public/**").permitAll()
                 .antMatchers("/users/**").hasAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
-                .and()
-                .formLogin()
+                .and().formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error")
                 .usernameParameter("email")
@@ -39,6 +41,12 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .rememberMe();
+        /*
+        if (securityProperties.isEnableCsrf()) {
+            http.addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
+        } else {
+            http.csrf().disable();
+        }*/
     }
 
     @Override

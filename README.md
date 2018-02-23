@@ -15,6 +15,7 @@ Chapters:
 * 4 - MVC the professional way: Spring rest tutorial
 * 5 - JPA and DB accessors
 * 6 - Spring security
+* 7 - Spring Rest secure services
 
 
 Conselleria d'educació.Alberto Soto Fernandez.

@@ -1,4 +1,3 @@
-
 rserver:
   port: 8080
 spring:

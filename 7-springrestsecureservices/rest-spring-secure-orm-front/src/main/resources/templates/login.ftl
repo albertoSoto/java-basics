@@ -12,14 +12,10 @@
         <li><a href="/">Home</a></li>
     </ul>
 </nav>
-
 <h1>Log in</h1>
-
 <p>You can use: demo@localhost / demo</p>
-
 <form role="form" action="/login" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
     <div>
         <label for="email">Email address</label>
         <input type="email" name="email" id="email" required autofocus/>
