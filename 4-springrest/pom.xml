@@ -18,6 +18,7 @@
     <modules>
         <module>rest-spring-core</module>
         <module>rest-spring-front</module>
+        <module>rest-spring-keycloak-front</module>
     </modules>
     <profiles>
         <profile>

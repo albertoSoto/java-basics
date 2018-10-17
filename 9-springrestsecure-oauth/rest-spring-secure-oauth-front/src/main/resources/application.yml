@@ -1,0 +1,49 @@
+rserver:
+  port: 8080
+spring:
+###
+#   Database Settings
+###
+  datasource:
+    url: jdbc:h2:mem:example-app;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    url: jdbc:h2:file:./local_db/testdb/
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+      #ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+###
+#   H2 Settings
+###
+  h2:
+    console:
+      enabled: true
+      path: /h2_console
+      settings:
+        trace: false
+        web-allow-others: true
+###
+#   Freemarker and MVC settings
+###
+  freemarker:
+    expose-spring-macro-helpers: true
+    expose-request-attributes: true
+  mvc:
+    view:
+      prefix: /templates/
+###
+#   Logging Settings
+###
+logging:
+  level:
+    org:
+      springframework: WARN
+      hibernate: WARN
